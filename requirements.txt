@@ -1,6 +1,0 @@
-
-pyTelegramBotAPI
-requests
-google-generativeai
-rembg
-pillow
