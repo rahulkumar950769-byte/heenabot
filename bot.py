@@ -10,15 +10,15 @@ genai.configure(api_key=GEMINI_API_KEY)
 model = genai.GenerativeModel('gemini-1.5-flash')
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text("Heena Bot Online hai 😊 Kya help chahiye?")
+    await update.message.reply_text("HeenaQueenBot Online hai 😊 Kya help chahiye?")
 
 async def chat(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_msg = update.message.text
     response = model.generate_content(user_msg)
     await update.message.reply_text(response.text)
 
-print app =(Application.print app ==(Application.builder().token(TELEGRAM_TOKEN).build)
-app = ApplicationBuilder().token(TELEGRAM_TOKEN).build()
+print("Bot started...")
+app = Application.builder().token(TELEGRAM_TOKEN).build()
 app.add_handler(CommandHandler("start", start))
 app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, chat))
 app.run_polling()
