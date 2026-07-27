@@ -12,14 +12,18 @@ genai.configure(api_key=GEMINI_API_KEY)
 model = genai.GenerativeModel('gemini-1.5-flash')
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text("Namaste! Main Heena Bot hun 😊\nKuch bhi pucho.")
+    await update.message.reply_text("Namaste! Main Heenabot hu 🤖\nKuch bhi pucho, main jawab dunga.")
 
 async def reply(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_text = update.message.text
-    response = model.generate_content(user_text)
-    await update.message.reply_text(response.text)
+    try:
+        response = model.generate_content(user_text)
+        await update.message.reply_text(response.text)
+    except Exception as e:
+        await update.message.reply_text(f"Error: {e}")
 
 app = ApplicationBuilder().token(TELEGRAM_TOKEN).build()
+
 app.add_handler(CommandHandler("start", start))
 app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, reply))
 
