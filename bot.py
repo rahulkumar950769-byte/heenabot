@@ -6,7 +6,7 @@ import google.generativeai as genai
 # Token yaha dalna hai ya Render ke Environment me
 TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
-GEMINI_API_KEY = os.getenv("GEMINI_KEY")
+
 # Gemini setup
 genai.configure(api_key=GEMINI_API_KEY)
 model = genai.GenerativeModel('gemini-1.5-flash')
